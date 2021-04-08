@@ -6,8 +6,8 @@
 trigger:
 - master
 
-pool:
-  vmImage: 'windows'
+pool: 'windows'
+#  vmImage: 'windows'
 
 variables:
   solution: '**/*test/*.csproj'
