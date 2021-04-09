@@ -12,7 +12,7 @@ pool: 'windows'
   
 
 variables:
-  solution: '**/*.sln'
+  solution: '**/*test/*.csproj'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
