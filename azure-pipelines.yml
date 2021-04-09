@@ -39,6 +39,10 @@ steps:
     projects: '**/*Test/*.csproj'
     arguments: '--runtime win-x64'
   continueOnError: true
+  
+- task: WhiteSource@21
+  inputs:
+             cwd: '$(System.DefaultWorkingDirectory)'
 
     
 
