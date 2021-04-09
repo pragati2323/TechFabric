@@ -6,8 +6,8 @@
 trigger:
 - master
 
-pool: 'windows'
-#  vmImage: 'windows-latest'
+pool:
+  vmImage: 'windows-latest'
 
   
 
