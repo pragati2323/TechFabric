@@ -1,0 +1,48 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+resources:
+  repositories:
+      - repository: testing
+        name: testing
+        type: git
+      - repository: 
+        name: pragati2323/gs-spring-boot
+        type: github
+        endpoint: pragati2323
+
+
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'   
+
+stages:
+  - stage: Build_java
+    displayName: Build Java Application
+    jobs:
+      - job: Build_App
+        steps:
+            - template: java-buildtemplate.yml@testing
+              parameters:
+                workingDirectory: '$(System.DefaultWorkingDirectory)'
+           
+              
+  - stage: Build_dotnet
+    displayName: Build dotnet App
+    jobs:
+      - job: Build_dotnet
+        steps: 
+          - template: dotnet-buildtemplate.yml@testing
+            parameters:
+              workingDirectory: $(System.DefaultWorkingDirectory)
+
+  - stage: Test
+    displayName: Test Application
+    jobs: 
+      - job: Test_App
+        steps:
+          - template: test.yml@testing
+
